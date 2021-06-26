@@ -51,7 +51,7 @@ module.exports.datastores = {
         // adapter: 'sails-mysql',
         // url: 'mysql://user:password@host:port/database',
         adapter: require('sails-mongo'),
-        url: 'mongodb+srv://koi1989:koi1989@koi-app.s0fbl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        url: 'mongodb+srv://koi1989:koi1989@koi-app.s0fbl.mongodb.net/node-test?retryWrites=true&w=majority',
 
     },
 
