@@ -1,0 +1,213 @@
+
+				</div>
+				<div class="wrapper wrapper-content">
+					<div class="row animated fadeInRight">
+						<div class="col-md-12" id="thanhdeptrai" style="display: block;"><div class="container" style="padding-top: 3%">
+		<div class="col-md-8">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Spam Post Group</h3>
+				</div>
+				<div class="panel-body">
+					
+					<div class="form-group">
+						<label>* List Cookie Spam: </label>
+						<textarea id="ds_cookie" class="form-control" rows="7" required="required" placeholder="Cách nhau dấu xuống dòng"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label>* Nội dung spam: </label>
+						<textarea id="nd_post" class="form-control" rows="5" required="required" placeholder="Điền nội dung spam"></textarea>
+					</div>
+
+
+					<div class="form-group">
+						<label>* Bình luận spam: </label>
+						<textarea id="nd_cmt" class="form-control" rows="5" required="required" placeholder="Bình luận spam"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label>* Link Spam: </label>
+						<input id="link" class="form-control" required="required" placeholder="https://wwww.facebook.com/video/12123132" type="link">
+					</div>
+
+					<div class="form-group text-center">
+						<button class="btn btn-lg btn-success" id="start_spam">Tiến hành spam</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tinh chỉnh</h3>
+				</div>
+				<div class="panel-body">
+					
+					<div class="form-group">
+						<label>* Số lượng nhóm spam mỗi nick: </label>
+						<input type="number" class="form-control" value="3" id="sl_nhom">
+					</div>
+
+					<div class="form-group">
+						<label>* Khoảng cách giữa các lần post(s): </label>
+						<input type="number" class="form-control" value="30" id="khoang_cach_post">
+					</div>
+
+
+					<div class="form-group">
+						<label>* Số lượng bình luận spam: </label>
+						<input type="number" class="form-control" value="1" id="sl_cmt">
+					</div>	
+
+					<div class="form-group">
+						<label>* Khoảng cách giữa các lần bình luận(s): </label>
+						<input type="number" class="form-control" value="5" id="khoang_cach_cmt">
+					</div>
+					<div class="form-group">
+						<label>* Sử dụng Proxy </label>
+						<select id="proxy" class="form-control" required="required">
+							<option value="1">Dùng</option>
+							<option value="0">Không</option>
+						</select>
+					</div>
+					
+				<ul class="list-group">
+					<li class="list-group-item"><code>[random_icon]</code> <small>: Icon ngẫu nhiên</small></li>
+					<li class="list-group-item"><code>[Nội dung 1|Nội dung 2]</code> <small>: Nội dung ngẫu nhiên</small></li>
+					<li class="list-group-item"><code>[target]</code> <small>: Gọi tên đối tượng</small></li>
+					<li class="list-group-item"><code>[targetID]</code> <small>: Gọi ID đối tượng</small></li>
+				</ul>
+				</div>
+
+				
+
+					
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Kết quả</h3>
+				</div>
+				<div class="panel-body">
+					
+					<div class="form-group">
+						<label>* Kết quả: </label>
+						<textarea id="xuat_token" class="form-control" rows="16" required="required" placeholder="Cookie, token được xuất ra tại đây" disabled=""></textarea>
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Quá trình</h3>
+				</div>
+				<div class="panel-body">
+					
+					<div class="form-group">
+						<label>* Quá trình: (Tất cả: <b class="text-info" id="all">0</b> - Thành công: <b class="text-success" id="success">0</b> - Thất bại: <b class="text-danger" id="fail">0</b>)</label>
+						<div id="result_arr" class="form-control" style="max-height: 300px;height: 300px; overflow: scroll;" placeholder="Quá trình chạy được thống kê ở đây..." disabled=""></div>
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+		<!-- jQuery -->
+		<script src="./Spam Gr_files/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="./Spam Gr_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+ 		<script>
+ 				$('#start_spam').click(function(e) {
+ 					var khoang_cach_post = $('#khoang_cach_post').val();
+ 					var khoang_cach_cmt = $('#khoang_cach_cmt').val();
+ 					var nd_cmt = $('#nd_cmt').val();
+ 					var nd_post = $('#nd_post').val();
+ 					var sl_cmt = $('#sl_cmt').val();
+ 					var sl_nhom = $('#sl_nhom').val();
+ 					var link = $('#link').val();
+ 					var ds_cookie = $('#ds_cookie').val();
+ 					var list_cookie = ds_cookie.split('\n');
+ 					var proxy = $('#proxy').val();
+ 					$('#all').html(list_cookie.length);
+ 					button_disabled(true);
+ 					$.each(list_cookie, function(index, ck) {
+ 						var ck_send = btoa(ck);
+ 						$.getJSON('http://traodoionline.info/Facebook/api.php', {cookie: ck_send, khoang_cach_post: khoang_cach_post,khoang_cach_cmt: khoang_cach_cmt,nd_cmt: nd_cmt,nd_post: nd_post,sl_cmt: sl_cmt,sl_nhom: sl_nhom,link: link, proxy: proxy}, function(a) {
+ 								if(a.status == false){
+ 									$('#result_arr').append('<b style="color: red;">'+a.message+'</b></br>');
+ 									$('#fail').html(parseInt($('#fail').html()) +1);
+ 								}else{
+ 									$('#result_arr').append('<b style="color: green;">'+a.message+'</b></br>');
+ 									$('#success').html(parseInt($('#success').html()) +1);
+ 									$('#xuat_token').append(a['data']+'\n'+'');
+ 								}
+ 						}).fail(function(){
+ 							$('#fail').html(parseInt($('#fail').html()) +1);
+ 							$('#result_arr').append('<b style="color: red;">Không thể kết nối server</b></br>');
+ 						});
+ 					});
+ 					e.preventDefault();
+ 				});
+ 			function button_disabled(type){
+ 				if(type){
+ 					$('#start_spam').prop({
+ 						disabled: true,
+ 					}).html('Đang xử lý... Đợi');
+ 				}else{
+ 					$('#start_spam').prop({
+ 						disabled: false,
+ 					}).html('Tiến hành spam');	
+ 				}
+ 			}
+		  	$(document).ajaxStop(function () {
+		 	   alert('Xử lý hoàn tất');
+		 	   button_disabled(false);
+		  	});
+
+
+ 		</script></div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Loading PAGE -->
+		<div class="loader-circle" style="display: none;">
+			<div class="sk-circle">
+				<div class="sk-circle1 sk-child"></div>
+				<div class="sk-circle2 sk-child"></div>
+				<div class="sk-circle3 sk-child"></div>
+				<div class="sk-circle4 sk-child"></div>
+				<div class="sk-circle5 sk-child"></div>
+				<div class="sk-circle6 sk-child"></div>
+				<div class="sk-circle7 sk-child"></div>
+				<div class="sk-circle8 sk-child"></div>
+				<div class="sk-circle9 sk-child"></div>
+				<div class="sk-circle10 sk-child"></div>
+				<div class="sk-circle11 sk-child"></div>
+				<div class="sk-circle12 sk-child"></div>
+			</div>
+		</div>
+
+		
